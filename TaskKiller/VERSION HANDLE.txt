@@ -1,0 +1,11 @@
+changed the timer tiles
+1
+5
+10
+15
+30
+10000
+
+16-06-2021
+__________________
+--> Added new Ringtones (Masked Wolf)

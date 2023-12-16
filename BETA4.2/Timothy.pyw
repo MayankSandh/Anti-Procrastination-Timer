@@ -9,7 +9,6 @@ from os import system as cmd
 root = Tk()
 root.title("Timothy | Easy to use Timer Application!")
 root.config(bg = "#dbf3fa")
-root.iconbitmap("images/alarm.ico")
 root.resizable(False, False)
 
 

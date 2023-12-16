@@ -1,0 +1,10 @@
+1) Add a documentation/help document
+DONE 2) Add a top menu bar
+DONE 3) Add a theme changing option
+DONE 4) Add the shutdown mode function
+5) Ability to edit and create new time tiles which works even after closing
+DONE 6) About me page
+DONE 7) Randomizer
+8) Keep the app open in the system tray even on closing.
+9) Settings panel to easily change the ringtone
+10) Repeater

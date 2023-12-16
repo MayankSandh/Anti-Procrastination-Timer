@@ -1,0 +1,7 @@
+changed the timer tiles
+1
+5
+10
+15
+30
+10000

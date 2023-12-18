@@ -9,6 +9,7 @@ from subprocess import run, CalledProcessError
 root = Tk()
 root.title("Timothy | Easy to use Timer Application!")
 root.config(bg = "#dbf3fa")
+root.iconbitmap("images/alarm.ico")
 root.resizable(False, False)
 
 
@@ -178,10 +179,24 @@ def setshutdownmode(x):
         ShutdownLabel['text'] = f"{x.upper()}_ENABLED"
     elif x == "pomodoro":
         global PomoTaskName, WorkTimeDuration, ShortBreakDuration, LongBreakDuration
-        PomoTaskName = simpledialog.askstring("Pomodoro Timer", "Pomodoro technique is divided into 3 phases:-\na) Work-Time (Pomodoro unit)\nb) Short Break\nc) Long Break\nAfter each pomodoro (work time), you get a short break, and then you get back to work.\nAfter 4 such pomodoro, you get a long break. Usually, work time is set as 25 minutes, short break as 5 minutes and long break as 15 minutes. However, you can edit as your wish.\n\nEnter the name of the task you would like to be reminded of at the start of pomodoro:- ")
-        WorkTimeDuration = simpledialog.askstring("Work Time Input", "Enter the work time time in minutes (or HH:MM:SS or MM:SS format, whatever suits you):- ")
-        ShortBreakDuration = simpledialog.askstring("Short Break Input", "Enter the short break time in minutes (or HH:MM:SS or MM:SS format, whatever suits you):- ")
-        LongBreakDuration = simpledialog.askstring("Long Break Input", "Enter the long break time in minutes (or HH:MM:SS or MM:SS format, whatever suits you):- ")
+        PomoTaskName = "GET BACK TO YOUR TASK"
+        WorkTimeDuration = "25:00"
+        ShortBreakDuration = "5:00"
+        LongBreakDuration = "15:00"
+
+        PomoCode = 0
+        PTN = simpledialog.askstring("Pomodoro Timer", "Pomodoro technique is divided into 3 phases:-\na) Work-Time (Pomodoro unit)\nb) Short Break\nc) Long Break\nAfter each pomodoro (work time), you get a short break, and then you get back to work.\nAfter 4 such pomodoro, you get a long break. Usually, work time is set as 25 minutes, short break as 5 minutes and long break as 15 minutes. However, you can edit as your wish.\n\nEnter the name of the task you would like to be reminded of at the start of pomodoro:- ")
+        WTD = simpledialog.askstring("Work Time Input", "Enter the work time time in minutes (or HH:MM:SS or MM:SS format, whatever suits you):- ")
+        SBD = simpledialog.askstring("Short Break Input", "Enter the short break time in minutes (or HH:MM:SS or MM:SS format, whatever suits you):- ")
+        LBD = simpledialog.askstring("Long Break Input", "Enter the long break time in minutes (or HH:MM:SS or MM:SS format, whatever suits you):- ")
+        if PTN != "":
+            PomoTaskName = PTN
+        if WTD != "":
+            WorkTimeDuration = WTD
+        if SBD != "":
+            ShortBreakDuration = SBD
+        if LBD != "":
+            LongBreakDuration = LBD
         setTimer(WorkTimeDuration)
         if ':' not in WorkTimeDuration:
             WorkTimeDuration = WorkTimeDuration+":00"
@@ -252,7 +267,7 @@ def EndCountdown():
             cmd(f"taskkill /IM {task} /F")
         TaskToBeKilled = list()
     elif shutdownmode == "pomodoro":
-        global PomoCode, PomoTaskName, WorkTimeDuration, ShortBreakDuration, LongBreakDurationS
+        global PomoCode, PomoTaskName, WorkTimeDuration, ShortBreakDuration, LongBreakDuration
         PomoCode+=1
         if PomoCode == 7:
             PomoCode = -1
@@ -267,7 +282,7 @@ def EndCountdown():
             startTimer()
         else:
             timeSet = ShortBreakDuration
-            displayNotification("Short Break Begins!", PomoTaskName+"\n"+timeSet)
+            displayNotification("Short Break Begins!", "Enjoy your short break"+"\n"+timeSet)
             setTimer(ShortBreakDuration)
             startTimer()
     else:
